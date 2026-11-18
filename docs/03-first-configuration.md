@@ -72,7 +72,7 @@ The wizard opens on first login. If it doesn't, find it under **System → Wizar
 | LAN address | Keep `192.168.1.1/24` (or your bench range) | Step 4 decides the final range |
 | Root password | Leave as set | You chose it during the install |
 
-Apply the settings at the end and wait for the page to reload.
+Apply the settings at the end and wait for the page to reload. If the wizard doesn't show the two WAN blocking options, they are under **Interfaces → WAN**.
 
 ## 3.5 Check the internet works through the firewall
 

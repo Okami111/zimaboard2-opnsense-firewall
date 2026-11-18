@@ -30,7 +30,7 @@ The ZimaBoard 2 has two 2.5GbE ports, which is exactly one WAN and one LAN. Add-
 | ZimaBoard 2 (832 or 1664) | Either model works. 8 GB of RAM is plenty for this build |
 | What came in the box | Power adapter and SATA Y-cable (checked in step 1) |
 | 2.5-inch SATA SSD, 120 GB or larger | OPNsense goes here, so the factory ZimaOS stays on the eMMC as a fallback |
-| USB flash drive, 4 GB or larger | For the installer. A second one is handy for configuration backups |
+| USB flash drive, 8 GB or larger | For the installer. A second one is handy for configuration backups |
 | USB keyboard and an HDMI or DisplayPort screen | Mini DisplayPort to HDMI adapter if your screen has no DisplayPort |
 | Two or three Ethernet cables | Cat5e or better carries 2.5GbE |
 | A computer to prepare the USB drive | Windows, macOS or Linux |
