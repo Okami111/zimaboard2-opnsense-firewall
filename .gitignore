@@ -1,0 +1,33 @@
+# Safety net: never commit firewall backups, keys or installer images.
+
+# OPNsense configuration backups (contain password hashes and private keys)
+config*.xml
+*config*.xml
+*.xml.bak
+
+# VPN configurations and keys
+*.conf
+*.key
+*.pem
+*.p12
+*.pfx
+*.ovpn
+
+# Installer images
+*.img
+*.img.bz2
+*.iso
+*.iso.bz2
+*.bz2
+*.sig
+*.pub
+
+# Local notes and secrets
+.env
+*.secret
+private/
+notes-private/
+
+# OS clutter
+.DS_Store
+Thumbs.db
