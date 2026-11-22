@@ -67,18 +67,30 @@ Leave every Ethernet cable unplugged for this step.
 
 If you miss it and the board boots ZimaOS instead, that is harmless with no network cable attached. Press **Ctrl+Alt+Delete** to restart, then tap Esc straight away.
 
-In the firmware setup, check and write down:
+The firmware setup is AMI's *Aptio Setup*, with six tabs: **Main**, **Advanced**, **Chipset**, **Security**, **Boot** and **Save & Exit**. The left and right arrow keys move between tabs, **Enter** opens a submenu, and **Esc** goes back one level.
 
-- [ ] **Firmware (BIOS) version**, so you can tell later whether an update has been applied.
-- [ ] **Memory**: 8 GB on the 832, 16 GB on the 1664.
-- [ ] **Storage**: the eMMC is listed, and so is your SSD. If the SSD is missing, power off, reseat both ends of the SATA Y-cable and try again.
+Check these four things:
 
-Change nothing for now, and leave without saving. The boot menu, which you need in step 2, opens with **F11** during startup according to [a ZimaBoard 2 owner on Zima's forum](https://community.zimaspace.com/t/pxe-boot-on-zimaboard-2/6200).
+1. **Main: firmware and memory.**
+   - Write down the **Build Date and Time**. It is the easiest way to tell later whether a firmware update has been applied.
+   - **Total Memory** should read 8192 MB on the 832 (16 GB on the 1664), and the processor should show as Intel N150.
+   - The **System Date** and **System Time** may be a few hours off your local time. That is fine if they match UTC: OPNsense expects the hardware clock to run on UTC, so leave them alone.
+2. **Chipset → PCH-IO Configuration → SATA Configuration: the SSD.** The Main tab does not list drives; this page does. The port your SSD is on shows its name and size, for example `SATA SSD (120.0GB)`, and the other port reads `Empty`. If both ports read `Empty`, unplug the power, reseat both ends of the SATA Y-cable (or use its other drive connector) and check again.
+3. **Security → Secure Boot: off.** It should read **Disabled** and **Not Active**. If it says Enabled, set it to Disabled: OPNsense's installer does not start with Secure Boot on. Turning it off does not stop ZimaOS from starting.
+4. **Advanced: both network ports.** Two entries should read *Intel(R) Ethernet Controller I226-V*, each followed by a MAC address. Both present means both ports are detected. If you film this screen, blur the MAC addresses.
+
+On the **Boot** tab, *Boot Option #1* reads **UEFI OS**. That is ZimaOS on the eMMC. The SSD is not listed because there is nothing on it to start yet. It appears after step 2.
+
+To leave, go to **Save & Exit**. Choose **Discard Changes and Exit** if you changed nothing, or **Save Changes and Exit** if you turned Secure Boot off.
+
+The boot menu, which you need in step 2, opens with **F11** during startup according to [a ZimaBoard 2 owner on Zima's forum](https://community.zimaspace.com/t/pxe-boot-on-zimaboard-2/6200). The **Save & Exit** tab also has a **Boot Override** list that does the same job.
 
 ## Done when
 
 - Everything from the box is accounted for.
-- The SSD is connected and appears in the firmware setup.
+- The SSD appears under **Chipset → PCH-IO Configuration → SATA Configuration**.
+- Secure Boot is disabled.
+- Both I226-V network ports are listed under **Advanced**.
 - You know the keys: **Esc** for firmware setup, **F11** for the boot menu.
 
 Next: [2. Installing OPNsense](02-install.md)

@@ -13,13 +13,13 @@ Each entry lists the symptom, the likely causes and what to try, in order. If yo
 - Check you downloaded the **vga** image, not dvd, serial or nano.
 - Rewrite the drive. With Rufus, choose **DD Image mode**. Copying the file onto the drive doesn't work.
 - Try the other USB port, or another USB drive.
-- In firmware setup, if **Secure Boot** is enabled, disable it. OPNsense's boot loader isn't signed for Secure Boot.
-- Use the boot override in firmware setup instead of F11, and pick the **UEFI** entry for the drive.
+- In firmware setup, check **Security → Secure Boot**. If it is enabled, disable it: OPNsense's boot loader isn't signed for Secure Boot.
+- Use **Save & Exit → Boot Override** in firmware setup instead of F11, and pick the **UEFI** entry for the drive.
 
 ## The installer doesn't see the SSD
 
 - Power off and unplug. Reseat the SATA Y-cable at both ends, or try its other drive connector.
-- Check the SSD appears in firmware setup. If it doesn't show there, OPNsense can't see it either.
+- Check the SSD appears under **Chipset → PCH-IO Configuration → SATA Configuration** in firmware setup. If that page shows both ports as `Empty`, OPNsense can't see the drive either.
 - Test the SSD in another computer, or try another one.
 
 ## It boots ZimaOS instead of OPNsense
