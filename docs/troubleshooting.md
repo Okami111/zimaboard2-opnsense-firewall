@@ -11,7 +11,7 @@ Each entry lists the symptom, the likely causes and what to try, in order. If yo
 ## The USB drive doesn't boot
 
 - Check you downloaded the **vga** image, not dvd, serial or nano.
-- Rewrite the drive. With Rufus, choose **DD Image mode**. Copying the file onto the drive doesn't work.
+- Rewrite the drive with balenaEtcher, using the unpacked `.img` file, not the `.bz2`. Copying the file onto the drive doesn't work.
 - Try the other USB port, or another USB drive.
 - In firmware setup, check **Security → Secure Boot**. If it is enabled, disable it: OPNsense's boot loader isn't signed for Secure Boot.
 - Use **Save & Exit → Boot Override** in firmware setup instead of F11, and pick the **UEFI** entry for the drive.
@@ -24,7 +24,9 @@ Each entry lists the symptom, the likely causes and what to try, in order. If yo
 
 ## It boots ZimaOS instead of OPNsense
 
-The eMMC is still first in the boot order. In firmware setup, move the SSD to the top of the boot priority list and save. See [step 2.7](02-install.md#27-make-the-ssd-the-first-boot-device).
+**While starting the installer (step 2.5):** you picked `UEFI OS`, or pressed **Esc** in the F11 menu, which boots the default entry. Restart, tap **F11**, and pick the line that starts with `UEFI:` and shows your USB drive's name. See [step 2.5](02-install.md#25-boot-the-installer).
+
+**After installing:** the eMMC is still first in the boot order. In firmware setup, move the SSD to the top of the boot priority list and save. See [step 2.7](02-install.md#27-make-the-ssd-the-first-boot-device).
 
 ## Can't reach the web interface
 

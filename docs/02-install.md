@@ -53,7 +53,7 @@ The output should be `Verified OK`.
 
 The download is compressed and must be unpacked into a plain `.img` file before writing.
 
-- **Windows:** right-click the file in [7-Zip](https://www.7-zip.org/) and choose *Extract Here*.
+- **Windows:** right-click the file and choose **WinRAR → Extract Here**. If you don't see the WinRAR entries, look under **Show more options**. You can also double-click the file to open it in [WinRAR](https://www.win-rar.com/) and click **Extract To**. If the file doesn't open in WinRAR, tick **BZ2** under **Options → Settings → Integration** and try again.
 - **macOS and Linux:**
 
   ```bash
@@ -68,12 +68,13 @@ Writing the image **erases everything on the USB drive.** Use an empty one, and 
 
 Copying the file onto the drive does not work. It has to be written with an image tool:
 
-**Windows: [Rufus](https://rufus.ie/)**
+**Windows: [balenaEtcher](https://etcher.balena.io/)**
 
-1. Plug in the USB drive and open Rufus.
-2. *Device*: your USB drive.
-3. *Boot selection*: **SELECT**, then pick the `.img` file.
-4. **START**. If Rufus asks how to write the image, choose **DD Image mode**.
+1. Plug in the USB drive and open balenaEtcher.
+2. **Flash from file**, then pick the unpacked `.img` file from 2.3, not the `.bz2`.
+3. **Select target**: your USB drive. Check the name and size before you continue.
+4. **Flash!** If Windows asks for administrator permission, allow it. Etcher writes the image and then checks it; wait until it says the flash is complete.
+5. If Windows then says the drive needs to be formatted, click **Cancel**. Windows can't read the OPNsense file system, and the drive is fine.
 
 **macOS**
 
@@ -93,15 +94,22 @@ sudo dd if=OPNsense-26.7-vga-amd64.img of=/dev/sdX bs=4M status=progress conv=fs
 
 Replace `diskN` or `sdX` with your USB drive. Pointing `dd` at the wrong disk overwrites it without warning.
 
-[balenaEtcher](https://etcher.balena.io/) also works on all three systems if you prefer a graphical tool.
+balenaEtcher also runs on macOS and Linux, if you'd rather use it than `dd`. The steps are the same as on Windows.
 
 ## 2.5 Boot the installer
 
 1. With the board unplugged, insert the USB drive. Keyboard and screen stay connected; Ethernet stays unplugged.
-2. Plug in the power and tap **F11** to open the boot menu.
-3. Choose the USB drive. If two entries appear for it, pick the one marked **UEFI**.
+2. Plug in the power and tap **F11** to open the boot menu. It's a blue box titled **Please select boot device:** with three entries:
+   - `UEFI OS`: ZimaOS on the board's built-in eMMC. Don't pick this one.
+   - `UEFI: <your USB drive's name>, Partition 1`: the OPNsense installer.
+   - `Enter Setup`: the firmware setup.
+3. Use the arrow keys to select the line that starts with `UEFI:` and shows your USB drive's name, then press **Enter**.
 
-If F11 shows nothing, tap **Esc** instead to open the firmware setup, go to the **Save & Exit** tab, and choose the USB drive under **Boot Override**.
+Your SSD isn't in this list yet. That's expected: there's nothing on it to boot until step 2.6.
+
+**Don't press Esc while this menu is open.** In this menu, Esc boots the default entry, which is ZimaOS. If you need the firmware setup, choose **Enter Setup** instead.
+
+If F11 shows nothing at all, restart and tap **Esc** as soon as the power connects to open the firmware setup, go to the **Save & Exit** tab, and choose the USB drive under **Boot Override**.
 
 OPNsense starts a live system from the USB drive. This takes a minute or two. When the login prompt appears, log in as:
 
