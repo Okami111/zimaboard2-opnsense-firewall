@@ -101,7 +101,7 @@ Replace `diskN` or `sdX` with your USB drive. Pointing `dd` at the wrong disk ov
 2. Plug in the power and tap **F11** to open the boot menu.
 3. Choose the USB drive. If two entries appear for it, pick the one marked **UEFI**.
 
-If F11 shows nothing, tap **Esc** instead to open the firmware setup, find the boot override list (usually on the *Save & Exit* page), and choose the USB drive there.
+If F11 shows nothing, tap **Esc** instead to open the firmware setup, go to the **Save & Exit** tab, and choose the USB drive under **Boot Override**.
 
 OPNsense starts a live system from the USB drive. This takes a minute or two. When the login prompt appears, log in as:
 
@@ -115,7 +115,7 @@ The installer is a text menu: arrow keys to move, **Space** to select, **Enter**
 1. **Keymap.** Keep the default (US) or choose your layout, then continue.
 2. **Install (ZFS).** ZFS is the recommended choice and copes better with sudden power loss. *Install (UFS)* also works if you prefer it.
 3. **Pool type: stripe.** One disk, no redundancy. That is expected with a single SSD.
-4. **Choose the disk.** This is the step that matters. Pick the SSD, checking its size and model name. On FreeBSD:
+4. **Choose the disk.** This is the step that matters. Pick the SSD, going by its size: budget drives often report a generic model name such as `SATA SSD`. On FreeBSD:
    - a SATA SSD is usually **`ada0`**
    - the onboard eMMC is usually **`mmcsd0`**
    - the USB installer is usually **`da0`**
@@ -130,8 +130,10 @@ The installer is a text menu: arrow keys to move, **Space** to select, **Enter**
 If the board comes back up in ZimaOS instead of OPNsense, the eMMC is still first in the boot order:
 
 1. Restart (**Ctrl+Alt+Delete** at the ZimaOS screen) and tap **Esc**.
-2. In the firmware setup, find the boot priority list and move the SSD to the top. It is usually listed by model name.
-3. Save and exit.
+2. On the **Boot** tab, select **Boot Option #1** and choose the SSD's entry.
+3. On **Save & Exit**, choose **Save Changes and Exit**.
+
+The eMMC's entry is called **UEFI OS**, and the SSD's entry may carry a similar generic name. If you can't tell them apart, use the **F11** boot menu to start each entry once, see which one brings up OPNsense, and set that one as Boot Option #1.
 
 ZimaOS stays on the eMMC, and you can still start it once from the **F11** boot menu whenever you want.
 
