@@ -11,7 +11,7 @@ Each entry lists the symptom, the likely causes and what to try, in order. If yo
 ## The USB drive doesn't boot
 
 - Check you downloaded the **vga** image, not dvd, serial or nano.
-- Rewrite the drive. With Rufus, choose **DD Image mode**. Copying the file onto the drive doesn't work.
+- Rewrite the drive with balenaEtcher, using the unpacked `.img` file, not the `.bz2`. Copying the file onto the drive doesn't work.
 - Try the other USB port, or another USB drive.
 - In firmware setup, check **Security → Secure Boot**. If it is enabled, disable it: OPNsense's boot loader isn't signed for Secure Boot.
 - Use **Save & Exit → Boot Override** in firmware setup instead of F11, and pick the **UEFI** entry for the drive.

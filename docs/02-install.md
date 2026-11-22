@@ -53,7 +53,7 @@ The output should be `Verified OK`.
 
 The download is compressed and must be unpacked into a plain `.img` file before writing.
 
-- **Windows:** right-click the file in [7-Zip](https://www.7-zip.org/) and choose *Extract Here*.
+- **Windows:** right-click the file and choose **WinRAR → Extract Here**. If you don't see the WinRAR entries, look under **Show more options**. You can also double-click the file to open it in [WinRAR](https://www.win-rar.com/) and click **Extract To**. If the file doesn't open in WinRAR, tick **BZ2** under **Options → Settings → Integration** and try again.
 - **macOS and Linux:**
 
   ```bash
@@ -68,12 +68,13 @@ Writing the image **erases everything on the USB drive.** Use an empty one, and 
 
 Copying the file onto the drive does not work. It has to be written with an image tool:
 
-**Windows: [Rufus](https://rufus.ie/)**
+**Windows: [balenaEtcher](https://etcher.balena.io/)**
 
-1. Plug in the USB drive and open Rufus.
-2. *Device*: your USB drive.
-3. *Boot selection*: **SELECT**, then pick the `.img` file.
-4. **START**. If Rufus asks how to write the image, choose **DD Image mode**.
+1. Plug in the USB drive and open balenaEtcher.
+2. **Flash from file**, then pick the unpacked `.img` file from 2.3, not the `.bz2`.
+3. **Select target**: your USB drive. Check the name and size before you continue.
+4. **Flash!** If Windows asks for administrator permission, allow it. Etcher writes the image and then checks it; wait until it says the flash is complete.
+5. If Windows then says the drive needs to be formatted, click **Cancel**. Windows can't read the OPNsense file system, and the drive is fine.
 
 **macOS**
 
@@ -93,7 +94,7 @@ sudo dd if=OPNsense-26.7-vga-amd64.img of=/dev/sdX bs=4M status=progress conv=fs
 
 Replace `diskN` or `sdX` with your USB drive. Pointing `dd` at the wrong disk overwrites it without warning.
 
-[balenaEtcher](https://etcher.balena.io/) also works on all three systems if you prefer a graphical tool.
+balenaEtcher also runs on macOS and Linux, if you'd rather use it than `dd`. The steps are the same as on Windows.
 
 ## 2.5 Boot the installer
 
