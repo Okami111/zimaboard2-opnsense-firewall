@@ -29,8 +29,8 @@ Work through this list after the switchover. Each check says what to do and what
 |---|---|---|
 | Survives a power cut | Choose **5) Power off system** at the console, wait, unplug, plug back in | It starts on its own and the internet returns without a keypress |
 | Boots the right disk | Same test | OPNsense comes up, not ZimaOS |
-| Remote-access tools connect directly | If you use Tailscale, run `tailscale status` on a device; for ZeroTier, check the peer list | Connections show as direct rather than relayed. If they're relayed, see [troubleshooting](troubleshooting.md#vpn-tools-connect-through-relays) |
-| Consoles are happy | Run each console's network test | Same NAT type as before. If stricter, see [troubleshooting](troubleshooting.md#game-console-shows-a-strict-nat-type) |
+| Remote-access tools connect directly | **Tailscale:** run `tailscale ping <another device>` on a device on your LAN. A reply `via <address>:<port>` is direct; `via DERP(...)` is relayed. **ZeroTier:** `zerotier-cli peers` shows `DIRECT` or `RELAY` for each peer | The same as before the switchover. If they're now relayed, see [troubleshooting](troubleshooting.md#vpn-tools-connect-through-relays) |
+| Consoles are happy | Run each console's network test. PlayStation 4: **Settings → Network → Test Internet Connection**. Nintendo Switch: **System Settings → Internet → Test Connection** | Same NAT type as before. If stricter, see [troubleshooting](troubleshooting.md#game-console-shows-a-strict-nat-type) |
 | Media and file sharing work | Stream from your media server, open a network share | Same as before |
 
 ## Over the first few days

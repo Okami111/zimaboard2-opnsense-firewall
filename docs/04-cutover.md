@@ -30,6 +30,7 @@ Log in to your old router and record the following in **private** notes. These d
 - [ ] Its **LAN address and subnet** (the gateway your devices use), for example `192.168.X.1/24`
 - [ ] Its **DHCP range** and **lease time**
 - [ ] Every **DHCP reservation**: device name, MAC address, IP address
+- [ ] The **current address and MAC address** of every device that should keep its address (servers, consoles, anything you reach by IP), from the old router's DHCP client list. If the old router has no reservation for a device, OPNsense might give it a different address, so you'll reserve these too in step 4.4
 - [ ] Every device whose address is **set by hand on the device itself**
 - [ ] **Port forwards**, **DMZ** and **port triggering** entries. Ideally there are none. Each one is a door into your network, so decide whether you still need it
 - [ ] Whether **UPnP** is on, and which devices use it (consoles and remote-access tools often do)
@@ -39,6 +40,7 @@ Also:
 
 - [ ] Export the old router's configuration to a file, and keep it private.
 - [ ] Run a **speed test** from a wired computer and note the result, so you can compare afterwards.
+- [ ] Run each game console's network test and note its **NAT type**. If you use Tailscale or ZeroTier, note whether connections are **direct** or **relayed**. [Step 5](05-verification.md#things-people-often-forget) shows how to check both, and you'll compare afterwards.
 - [ ] Take a fresh OPNsense backup (**System → Configuration → Backups**).
 
 ## 4.3 Pick a quiet time and get ready
@@ -60,8 +62,8 @@ Your internet drops for a few minutes during the swap. Have ready:
    - Keep HTTPS.
 3. Unplug and replug the laptop's cable so it picks up an address in the new range.
 4. Open the web interface at the new address, for example `https://192.168.X.1`.
-5. Recreate each **DHCP reservation**: **Services → Dnsmasq DNS & DHCP → Hosts**, then add the host name, IP address and hardware (MAC) address from your notes. Apply.
-6. Check **Services → Dnsmasq DNS & DHCP → DHCP ranges** shows the range you entered.
+5. Add a **reservation** for each device in your notes: **Services → Dnsmasq DNS & DHCP → Hosts**, then add the host name, IP address and hardware (MAC) address. Type the MAC address with colons (`aa:bb:cc:dd:ee:ff`); some routers show it with dashes. Apply.
+6. Check **Services → Dnsmasq DNS & DHCP → DHCP ranges** shows the range you entered, on the **LAN** interface only. There should be no range on WAN: a DHCP server answering on the WAN side would hand out addresses to your provider's or building's network.
 7. Take another configuration backup.
 
 (Fresh OPNsense installs use Dnsmasq for DHCP. If your install uses ISC or Kea DHCP instead, the reservations live under that service's page.)

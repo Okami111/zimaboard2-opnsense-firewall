@@ -69,6 +69,8 @@ Intel I225 and I226 ports on some Intel N-series mini PCs [drop their link under
 
 Peer-to-peer VPN tools such as Tailscale and ZeroTier try to connect devices directly, and fall back to slower relays when the firewall's address translation gets in the way. Your old router may have helped them through UPnP or NAT-PMP, which OPNsense doesn't run by default.
 
+To check, run `tailscale ping <another device>`: `via DERP(...)` means relayed, and `via <address>:<port>` means direct. With ZeroTier, `zerotier-cli peers` shows `RELAY` or `DIRECT`.
+
 Options, from most to least contained:
 
 1. **Endpoint-independent UDP mapping (full-cone NAT).** OPNsense 26.7.2 added this to **Firewall → NAT → Source NAT**. Applied to the device that runs the VPN tool, it usually allows direct connections.
