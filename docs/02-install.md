@@ -99,10 +99,17 @@ balenaEtcher also runs on macOS and Linux, if you'd rather use it than `dd`. The
 ## 2.5 Boot the installer
 
 1. With the board unplugged, insert the USB drive. Keyboard and screen stay connected; Ethernet stays unplugged.
-2. Plug in the power and tap **F11** to open the boot menu.
-3. Choose the USB drive. If two entries appear for it, pick the one marked **UEFI**.
+2. Plug in the power and tap **F11** to open the boot menu. It's a blue box titled **Please select boot device:** with three entries:
+   - `UEFI OS`: ZimaOS on the board's built-in eMMC. Don't pick this one.
+   - `UEFI: <your USB drive's name>, Partition 1`: the OPNsense installer.
+   - `Enter Setup`: the firmware setup.
+3. Use the arrow keys to select the line that starts with `UEFI:` and shows your USB drive's name, then press **Enter**.
 
-If F11 shows nothing, tap **Esc** instead to open the firmware setup, go to the **Save & Exit** tab, and choose the USB drive under **Boot Override**.
+Your SSD isn't in this list yet. That's expected: there's nothing on it to boot until step 2.6.
+
+**Don't press Esc while this menu is open.** In this menu, Esc boots the default entry, which is ZimaOS. If you need the firmware setup, choose **Enter Setup** instead.
+
+If F11 shows nothing at all, restart and tap **Esc** as soon as the power connects to open the firmware setup, go to the **Save & Exit** tab, and choose the USB drive under **Boot Override**.
 
 OPNsense starts a live system from the USB drive. This takes a minute or two. When the login prompt appears, log in as:
 

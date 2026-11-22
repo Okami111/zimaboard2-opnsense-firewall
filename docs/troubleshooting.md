@@ -24,7 +24,9 @@ Each entry lists the symptom, the likely causes and what to try, in order. If yo
 
 ## It boots ZimaOS instead of OPNsense
 
-The eMMC is still first in the boot order. In firmware setup, move the SSD to the top of the boot priority list and save. See [step 2.7](02-install.md#27-make-the-ssd-the-first-boot-device).
+**While starting the installer (step 2.5):** you picked `UEFI OS`, or pressed **Esc** in the F11 menu, which boots the default entry. Restart, tap **F11**, and pick the line that starts with `UEFI:` and shows your USB drive's name. See [step 2.5](02-install.md#25-boot-the-installer).
+
+**After installing:** the eMMC is still first in the boot order. In firmware setup, move the SSD to the top of the boot priority list and save. See [step 2.7](02-install.md#27-make-the-ssd-the-first-boot-device).
 
 ## Can't reach the web interface
 

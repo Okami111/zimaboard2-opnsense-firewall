@@ -2,7 +2,7 @@
 
 Turn a ZimaBoard 2 into your own router and firewall with [OPNsense](https://opnsense.org/), starting from the moment you open the box.
 
-> **Status: draft.** These steps follow the official OPNsense and Zima documentation. Step 1 has been checked on a ZimaBoard 2 832 with firmware built 22 July 2025; steps 2 to 5 have not yet been run on real hardware. This notice will be replaced with the exact versions tested once they have been.
+> **Status: draft.** These steps follow the official OPNsense and Zima documentation. Step 1 and the boot menu in step 2.5 have been checked on a ZimaBoard 2 832 with firmware built 22 July 2025; the rest of steps 2 to 5 have not yet been run on real hardware. This notice will be replaced with the exact versions tested once they have been.
 
 ## What you end up with
 
