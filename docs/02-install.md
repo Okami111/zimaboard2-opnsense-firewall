@@ -2,7 +2,7 @@
 
 This step installs OPNsense onto the SSD. Keep every Ethernet cable unplugged from the ZimaBoard until step 3: the installer does not need a network.
 
-Version used in this guide: **OPNsense 26.7**. Newer images work the same way; replace `26.7` in file names with the version you download.
+Tested with the **OPNsense 26.7** image, which step 3 updates to the latest 26.7.x release. Newer images work the same way; replace `26.7` in file names with the version you download.
 
 ## 2.1 Download the installer
 

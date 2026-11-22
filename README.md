@@ -2,7 +2,7 @@
 
 Turn a ZimaBoard 2 into your own router and firewall with [OPNsense](https://opnsense.org/), starting from the moment you open the box.
 
-> **Status: draft.** These steps follow the official OPNsense and Zima documentation. Step 1 and the boot menu in step 2.5 have been checked on a ZimaBoard 2 832 with firmware built 22 July 2025; the rest of steps 2 to 5 have not yet been run on real hardware. This notice will be replaced with the exact versions tested once they have been.
+> **Tested end to end** in November 2026 on a ZimaBoard 2 832 (firmware built 22 July 2025): installed from the OPNsense 26.7 image and updated to **26.7.9_3**. Later releases may move a menu or rename a label; the steps point out where that's likely.
 
 ## What you end up with
 
@@ -57,7 +57,11 @@ Stuck? See [troubleshooting](docs/troubleshooting.md).
 
 ## Disclosure
 
-The ZimaBoard 2 and accessories used for this guide were provided free by Zima (IceWhale).
+The ZimaBoard 2 and accessories used for this guide were provided free by Zima (IceWhale). This is an independent guide, not an official OPNsense or Zima publication.
+
+## Found a problem?
+
+If a step doesn't match what you see, [open an issue](https://github.com/Okami111/zimaboard2-opnsense-firewall/issues) with your board model, firmware build date and OPNsense version. Please don't paste configuration backups, your public IP address or MAC addresses into an issue.
 
 ## Sources
 
@@ -65,3 +69,7 @@ The ZimaBoard 2 and accessories used for this guide were provided free by Zima (
 - [OPNsense manual: Initial installation and configuration](https://docs.opnsense.org/manual/install.html)
 - [OPNsense 26.7 release notes](https://docs.opnsense.org/releases/CE_26.7.html)
 - [ZimaBoard 2 product page](https://shop.zimaspace.com/products/zimaboard2-single-board-server)
+
+## License
+
+This guide is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE). You're free to share and adapt it, including commercially, as long as you give credit and link back.

@@ -34,7 +34,7 @@ Then:
 | 32 GB eMMC | Holds the factory ZimaOS. This guide leaves it untouched as a fallback |
 | Fan header | For the optional fan. The board is designed to run fanless |
 
-Zima's team has said the Ethernet ports use Intel I226-V controllers. On OPNsense, which is built on FreeBSD, they appear as `igc0` and `igc1`.
+The firmware lists both Ethernet ports as Intel I226-V controllers. On OPNsense, which is built on FreeBSD, they appear as `igc0` and `igc1`.
 
 ## 1.3 Decide where everything lives
 
@@ -83,7 +83,7 @@ On the **Boot** tab, *Boot Option #1* reads **UEFI OS**. That is ZimaOS on the e
 
 To leave, go to **Save & Exit**. Choose **Discard Changes and Exit** if you changed nothing, or **Save Changes and Exit** if you turned Secure Boot off.
 
-The boot menu, which you need in step 2, opens with **F11** during startup according to [a ZimaBoard 2 owner on Zima's forum](https://community.zimaspace.com/t/pxe-boot-on-zimaboard-2/6200). The **Save & Exit** tab also has a **Boot Override** list that does the same job.
+The boot menu, which you need in step 2, opens with **F11** during startup. The **Save & Exit** tab also has a **Boot Override** list that does the same job.
 
 ## Done when
 
